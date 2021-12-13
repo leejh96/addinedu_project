@@ -1,7 +1,12 @@
 import React from "react";
 import SignInContainer from "../containers/auth/SignInContainer";
-function SigninPage() {
-  return <SignInContainer />;
+
+function SignInPage() {
+  return (
+    <>
+      <SignInContainer />
+    </>
+  );
 }
 
-export default SigninPage;
+export default SignInPage;

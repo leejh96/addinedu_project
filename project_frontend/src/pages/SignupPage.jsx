@@ -1,8 +1,12 @@
 import React from "react";
-import SignupContainer from "../containers/auth/SignUpContainer";
+import SignUpContainer from "../containers/auth/SignUpContainer";
 
-function SignupPage() {
-  return <SignupContainer />;
+function SignUpPage() {
+  return (
+    <>
+      <SignUpContainer />
+    </>
+  );
 }
 
-export default SignupPage;
+export default SignUpPage;
