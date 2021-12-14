@@ -23,8 +23,7 @@ const StyledInput = styled.input`
   padding-bottom: 0.5rem;
 
   & + & {
-    margin-top: 1rem;
-  }
+    margin-top: 1rem; //같은 것이 인접했을 경우 사용
 `;
 
 const StyledButton = styled.button`

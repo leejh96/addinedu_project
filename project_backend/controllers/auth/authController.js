@@ -1,10 +1,18 @@
 const userModel = require("../../models/user");
+const jwtModule = require("../../modules/jwtModule");
 
 const authsController = {
-  createUser: async (req, res) => {
+  signup: async (req, res) => {
     const { email, name, password } = req.body;
-
-    const findUser = await userModel.findOne({ email });
+    let findUser;
+    try {
+      findUser = await userModel.findOne({ email });
+    } catch (error) {
+      res.status(500).json({
+        message: "DB서버 에러",
+        error,
+      });
+    }
     if (findUser) {
       return res.status(400).json({
         message: "이미 존재하는 이메일",
@@ -15,7 +23,7 @@ const authsController = {
       email,
       name,
       password,
-      createDate: new Date(),
+      createDate: Date.now(),
     });
 
     try {
@@ -30,17 +38,21 @@ const authsController = {
       });
     }
   },
-  signinUser: async (req, res) => {
+  signin: async (req, res) => {
     const { email, password } = req.body;
     try {
       const user = await userModel.findOne({ email });
       if (user) {
         if (password === user.password) {
+          const accessToken = jwtModule.create({
+            email,
+          });
           return res.status(200).json({
             message: "로그인 성공",
+            accessToken,
           });
         }
-        return res.status(400).json({
+        return res.status(401).json({
           message: "비밀번호 다름",
         });
       }

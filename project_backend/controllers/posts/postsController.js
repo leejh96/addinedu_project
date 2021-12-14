@@ -1,8 +1,11 @@
 const postsModel = require("../../models/post");
+const jwtModule = require("../../modules/jwtModule");
 
 const postsController = {
   createPost: async (req, res) => {
     const { title, content } = req.body;
+    const userInfo = req.userInfo;
+
     const post = new postsModel({
       title,
       content,
