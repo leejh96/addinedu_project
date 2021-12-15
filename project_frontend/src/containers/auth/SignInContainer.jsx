@@ -31,7 +31,6 @@ function SignInContainer({ setUser, setIsLoggedIn }) {
         localStorage.setItem("accessToken", accessToken);
         client.defaults.headers.common["Authorization"] = `${accessToken}`;
         const result = await client.get("/users");
-        console.log(result.data.data);
         setUser(result.data.data);
         setIsLoggedIn(true);
         navigate("/");

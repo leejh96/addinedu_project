@@ -69,7 +69,8 @@ const DownArrowIconsBlock = styled.div`
 
 const DownArrowIcon = styled(MdKeyboardArrowDown)``;
 
-function NavbarComponent() {
+function NavbarComponent({ isLoggedIn, user }) {
+  console.log(isLoggedIn, user);
   return (
     <NavbarBlock>
       <NavbarWrapper>

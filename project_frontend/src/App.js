@@ -12,13 +12,13 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <NavbarContainer />
+      <NavbarContainer user={user} isLoggedIn={isLoggedIn} />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route
           path="/signin"
           element={
-            <SignInPage setUser={setUser} setIsLoggined={setIsLoggedIn} />
+            <SignInPage setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
           }
         />
         <Route path="/signup" element={<SignUpPage />} />
